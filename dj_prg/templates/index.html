@@ -3,8 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <title>Главная страница</title>
+
+    <!-- BOOTSTRAP -->
+    <!-- Подключение BS через CDN - https://getbootstrap.com -->
+    <!-- Создание сетки сайта - https://getbootstrap.su/docs/5.0/layout/grid/ -->
+
+    <!-- Как гуглить -> bootstrap Кнопки v5 - https://bootstrap-4.ru/docs/5.0/components/buttons/-->
+    <!-- Как гуглить -> bootstrap Отступы v4 https://bootstrap-4.ru/docs/4.0/utilities/spacing/ -->
+    <!-- Как гуглить -> bootstrap Выравнивание v5 - https://getbootstrap.su/docs/5.0/utilities/text/ -->
+    <!-- Как гуглить -> bootstrap Форма v5 - https://getbootstrap.su/docs/5.0/forms/overview/ -->
+    <!-- Как гуглить -> bootstrap Таблицы v5 - https://getbootstrap.su/docs/5.0/content/tables/ -->
+
+    <!-- Подключение Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
 </head>
 <body>
-<button type="button" class="btn btn-primary">Primary</button>
+
+<div class="container">
+
+    <!-- ПЕРВАЯ СТРОКА 12 позиций (всегда) -->
+    <div class="row">
+        <div class="col-2">  <!-- Первая колонка 2 позиции -->
+            <p class="text-center">Колонка Левая</p>
+        </div>
+        <div class="col-8">  <!-- Первая колонка 8 позиции -->
+            <div class="d-grid text-center">
+                <button onclick="alert('Регистрация в данный момент не доступна!')" class="mt-2 btn btn-success btn-lg">Регистрация</button>
+            </div>
+        </div>
+        <div class="col-2">  <!-- Первая колонка 8 позиции -->
+            <p class="text-center">Колонка Правая</p>
+        </div>
+    </div>
+
+    <!-- ВТОРАЯ СТРОКА 12 позиций (всегда) -->
+    <div class="row">
+        <div class="col-6">
+            <div class="text-center">
+                <form action="" method="POST">
+                    {% csrf_token %} <!-- ЗАЩИТА ФОРМЫ -->
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Почта</label>
+                        <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Пароль</label>
+                        <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-danger">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="text-center">
+                <table class="mt-5 table table-success table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Фамилия</th>
+                        <th scope="col">Обращение</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ТРЕТЬЯ СТРОКА 12 позиций (всегда) -->
+    <div class="row">
+        <div class="col-2">  <!-- Первая колонка 2 позиции -->
+        </div>
+        <div class="col-8">  <!-- Первая колонка 8 позиции -->
+            <div class="d-grid text-center">
+
+                <!-- ВСТАВКА ФОРМЫ ИЗ FORMS.PY -->
+                <form action="" method="POST">
+                    {% csrf_token %} <!-- ЗАЩИТА ФОРМЫ -->
+                    {{ form }}  <!-- ПОЛЯ ВВОДА -->
+                    <button type="submit" class="btn btn-danger">Войти</button>  <!-- КНОПКА ФОРМЫ -->
+                </form>
+
+                Логин: {{ email }}
+                <br>
+                Пароль: {{ password }}
+
+            </div>
+        </div>
+        <div class="col-2">  <!-- Первая колонка 8 позиции -->
+        </div>
+    </div>
+
+</div>
+
 </body>
 </html>
