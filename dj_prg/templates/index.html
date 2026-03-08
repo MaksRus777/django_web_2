@@ -96,31 +96,65 @@
         </div>
     </div>
 
+    <!-- {{ form1 }} - Вставить все поля (BS будет только на полях, на другом его не будет и его не поставить)-->
+    <!-- {{ form1.name.label }} + {{ form1.name }} + {{ form1.help_text }} - Теперь можно навесить BS на все остальное потому что появились тег-->
+
+
     <!-- ТРЕТЬЯ СТРОКА 12 позиций (всегда) -->
     <div class="row">
         <div class="col-2">  <!-- Первая колонка 2 позиции -->
         </div>
         <div class="col-8">  <!-- Первая колонка 8 позиции -->
-            <div class="d-grid text-center">
 
                 <!-- ВСТАВКА ФОРМЫ ИЗ FORMS.PY -->
-                <form action="" method="POST">
+                <form class="rom g-2 pt-5 pb-5" method="POST">
                     {% csrf_token %} <!-- ЗАЩИТА ФОРМЫ -->
-                    {{ form }}  <!-- ПОЛЯ ВВОДА -->
-                    <button type="submit" class="btn btn-danger">Войти</button>  <!-- КНОПКА ФОРМЫ -->
+
+                    <!-- !!! Правильная вставка формы (где есть BS на [полях от widget от forms.py] и есть BS на [других остальных элементах навешенных вручную в html шаблоне] ) -->
+
+                    <div class="mb-3"><label class="form-label">{{ form1.name.label }}</label>{{ form1.name }}<div class="form-text">{{ form1.name.help_text }}</div></div>
+                    <div class="mb-3"><label class="form-label">{{ form1.age.label }}</label>{{ form1.age }}<div class="form-text">{{ form1.age.help_text }}</div></div>
+                    <div class="mb-3"><label class="form-label">{{ form1.flag.label }}</label>{{ form1.flag }}<div class="form-text">{{ form1.flag.help_text }}</div></div>
+                    <div class="mb-3"><label class="form-label">{{ form1.comment.label }}</label>{{ form1.comment }}<div class="form-text">{{ form1.comment.help_text }}</div></div>
+                    <div class="mb-3"><label class="form-label">{{ form1.ling.label }}</label>{{ form1.ling }}<div class="form-text">{{ form1.ling.help_text }}</div></div>
+                    <div class="mb-3"><label class="form-label">{{ form1.country.label }}</label>{{ form1.country }}<div class="form-text">{{ form1.country.help_text }}</div></div>
+                    <div class="mb-3"><label class="form-label">{{ form1.file_name.label }}</label>{{ form1.file_name }}<div class="form-text">{{ form1.file_name.help_text }}</div></div>
+                    <div class="mb-3"><label class="form-label">{{ form1.file_path.label }}</label>{{ form1.file_path }}<div class="form-text">{{ form1.file_path.help_text }}</div></div>
+
+                    <div class="d-grid"><button type="submit" class="btn btn-danger mt-3">Отправить</button></div> <!-- КНОПКА ФОРМЫ -->
                 </form>
 
-                Логин: {{ email }}
-                <br>
-                Пароль: {{ password }}
-
-            </div>
+            <ul class="mt-3">
+                {% for elm in data %}
+                <li>{{ elm.0 }} = {{ elm.1 }}</li>
+                {% endfor %}
+            </ul>
         </div>
         <div class="col-2">  <!-- Первая колонка 8 позиции -->
         </div>
     </div>
 
+     <!-- ЧЕТВЕРТАЯ СТРОКА 12 позиций (всегда) -->
+    <div class="mt-5 row">
+        <div class="col-1">  <!-- Первая колонка 2 позиции -->
+        </div>
+        <div class="col-10">  <!-- Первая колонка 8 позиции -->
+            <div class="d-grid text-center">
+
+            </div>
+        </div>
+        <div class="col-1">  <!-- Первая колонка 8 позиции -->
+        </div>
+    </div>
+
 </div>
+
+<!-- ВСТАВКА ФОРМЫ ИЗ FORMS.PY -->
+<form action="" method="POST">
+    {% csrf_token %} <!-- ЗАЩИТА ФОРМЫ -->
+    {{ form2 }}  <!-- ПОЛЯ ВВОДА -->
+    <div class="d-grid"><button type="submit" class="btn btn-primary mt-3">Авторизоваться</button></div> <!-- КНОПКА ФОРМЫ -->
+</form>
 
 </body>
 </html>
