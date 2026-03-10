@@ -36,3 +36,13 @@ def index(request):
         return render(request, "index.html", context=context)
 
     return None  # Заглушка чтобы PEP 8 не ругался
+
+
+def operation(request):
+    if request.method == "GET":
+        form = OperationForm()
+        context ={'FORM': form}
+        return render(request, "operation.html", context = context)
+    if request.method == "POST":
+        pass
+    return None

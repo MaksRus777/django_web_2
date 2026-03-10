@@ -50,3 +50,11 @@ class UserForm(forms.Form):
 class AuthorizationForm(forms.Form):
     email = forms.EmailField(label="Email", widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'name@example.com'}))
     password = forms.CharField(label="Password", widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
+
+
+class  OperationForm(forms.Form):
+    pk = forms.IntegerField(label="ID", required=False,widget=forms.NumberInput(attrs={'class': 'form-control'}))
+    name = forms.CharField(label = "Имя", widget=forms.TextInput(attrs={'class': 'form-control'}))
+    age = forms.IntegerField(label="Возраст", help_text="Введите возраст", required=False, widget=forms.NumberInput(attrs={'class': 'form-control'}))
+
+
