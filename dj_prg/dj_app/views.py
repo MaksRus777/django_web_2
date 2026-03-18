@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from dj_app.forms import *
+from dj_app.models import *
 
 
 # Главная страница
@@ -41,8 +42,18 @@ def index(request):
 def operation(request):
     if request.method == "GET":
         form = OperationForm()
-        context ={'FORM': form}
+
+
+        person = Person.objects.all()
+        context ={'FORM': form, "TABLE": person}
         return render(request, "operation.html", context = context)
     if request.method == "POST":
-        pass
-    return None
+        pk = request.POST.get('pk')
+        name = request.POST.get('name')
+        age = request.POST.get('age')
+        form = OperationForm()
+        Person.objects.create(name=name, age=age)
+
+        person = Person.objects.all()
+        context ={'FORM': form, "TABLE": person}
+        return render(request, "operation.html", context = context)

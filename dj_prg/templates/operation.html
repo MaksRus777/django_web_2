@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
@@ -12,61 +12,49 @@
 <body>
 
 <div class="container">
-    <h3 class = "mx-3 my-3 text-center">Меню</h3>
-    <div class = "text-center">
-        <a class="btn btn-outline-info" href = "operation">Чтение всех(главная)</a>
-        <a class="btn btn-outline-info" href = "operation">Чтение одного</a>
-        <a class="btn btn-outline-info" href = "operation">Чтение фильтер</a>
+    <h3 class="mx-3 my-3 text-center">Меню</h3>
+    <div class="text-center">
+        <a class="btn btn-outline-info" href="operation">Чтение всех(главная)</a>
+        <a class="btn btn-outline-info" href="operation">Чтение одного</a>
+        <a class="btn btn-outline-info" href="operation">Чтение фильтер</a>
 
     </div>
-  <div class="row">
+    <div class="row">
 
 
-    <div class="col=6">
-                <form class="rom g-2 pt-5 pb-5" method="POST">
-                    {% csrf_token %} <!-- ЗАЩИТА ФОРМЫ -->
+        <div class="col=6">
+            <form class="rom g-2 pt-5 pb-5" method="POST">
+                {% csrf_token %} <!-- ЗАЩИТА ФОРМЫ -->
 
-                    <!-- !!! Правильная вставка формы (где есть BS на [полях от widget от forms.py] и есть BS на [других остальных элементах навешенных вручную в html шаблоне] ) -->
+                <!-- !!! Правильная вставка формы (где есть BS на [полях от widget от forms.py] и есть BS на [других остальных элементах навешенных вручную в html шаблоне] ) -->
 
-                    <div class="mb-3"><label class="form-label">{{ FORM.pk.label }}</label>{{ FORM.pk }}</div>
-                    <div class="mb-3"><label class="form-label">{{ FORM.name.label }}</label>{{ FORM.name }}</div>
-                    <div class="mb-3"><label class="form-label">{{ FORM.age.label }}</label>{{ FORM.age }}</div>
+                <div style=display:none class="mb-3"><label class="form-label">{{ FORM.pk.label }}</label>{{ FORM.pk }}
+                </div>
+                <div class="mb-3"><label class="form-label">{{ FORM.name.label }}</label>{{ FORM.name }}</div>
+                <div class="mb-3"><label class="form-label">{{ FORM.age.label }}</label>{{ FORM.age }}</div>
 
-                    <div class="d-grid"><button type="submit" class="btn btn-danger mt-3">Отправить</button></div> <!-- КНОПКА ФОРМЫ -->
-                </form>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-danger mt-3">Отправить</button>
+                </div> <!-- КНОПКА ФОРМЫ -->
+            </form>
+        </div>
+        <h3 class="mx-3 my-3 text-center">Вывод резудьтатов</h3>
+
     </div>
-    <h3 class = "mx-3 my-3 text-center">Вывод резудьтатов</h3>
-
-  </div>
     <table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Имя</th>
-      <th scope="col">Фамилия</th>
-      <th scope="col">Обращение</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Фамилия</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in TABLE %}
+            <tr><th>1</th><td>{{i.name}}</td><td>{{i.age}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 
 </body>
