@@ -44,20 +44,37 @@ def operation(request):
     # ЛОГИКА 1. [Клиент Обновил Страницу] - Когда клиент хочет посмотреть
     if request.method == "GET":
 
-        # 1. Создание формы
+        # 1. Прочитать какая кнопка была нажата для чтения (all / one / filter)
+        button = request.GET.get("button")
+
+        # 2. Прочитать какая кнопка была нажата для удаления (all / one / filter)
+        button_delete_id = request.GET.get("delete", None)  # None - Дефолтные данные (если кнопка не нажата)
+        button_update_id = request.GET.get("update", None)  # None - Дефолтные данные (если кнопка не нажата)
+        print("button_delete_id={} button_update_id={}".format(button_delete_id, button_update_id))
+        # ТУТ ПРОДОЛЖИТЬ ....
+
+        # 3. Создание формы
         form = OperationsForm()
 
-        # 2. Прочитать из БД всех людей
-        person = Person.objects.all()
+        # 4. Чтение из БД в зависимости какая кнопка была нажата
+        person = None
+        if button == "all":
+            person = Person.objects.all()
+        if button == "one":
+            person = [Person.objects.get(pk=5)]
+        if button == "filter":
+            person = Person.objects.filter(age=30)
+        if button == "exclude":
+            person = Person.objects.exclude(age=30)
 
-        # 3. Показать страницу
+        # 5. Показать страницу
         context = {"FORM": form, "TABLE": person}
         return render(request, "operation.html", context=context)
 
     # ЛОГИКА 2. [Клиент Нажал Кнопку Войти] - Когда клиент чтото хочет отправить
     if request.method == "POST":
 
-        # 1. Вытянули данные
+        # 1. Вытянули данные из формы
         pk = request.POST.get("pk")
         name = request.POST.get("name")
         age = request.POST.get("age")
@@ -75,9 +92,6 @@ def operation(request):
         context = {"FORM": form, "TABLE": person}
         return render(request, "operation.html", context=context)
 
-
         # !!! Исправить create подсветку
-
-
 
     return None  # Заглушка чтобы PEP 8 не ругался

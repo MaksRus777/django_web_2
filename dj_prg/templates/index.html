@@ -24,7 +24,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container mb-5">
 
     <!-- ПЕРВАЯ СТРОКА 12 позиций (всегда) -->
     <div class="row">
@@ -33,7 +33,9 @@
         </div>
         <div class="col-8">  <!-- Первая колонка 8 позиции -->
             <div class="d-grid text-center">
-                <button onclick="alert('Регистрация в данный момент не доступна!')" class="mt-2 btn btn-success btn-lg">Регистрация</button>
+                <button onclick="alert('Регистрация в данный момент не доступна!')" class="mt-2 btn btn-success btn-lg">
+                    Регистрация
+                </button>
             </div>
         </div>
         <div class="col-2">  <!-- Первая колонка 8 позиции -->
@@ -49,7 +51,8 @@
                     {% csrf_token %} <!-- ЗАЩИТА ФОРМЫ -->
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Почта</label>
-                        <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input name="email" type="email" class="form-control" id="exampleInputEmail1"
+                               aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Пароль</label>
@@ -106,23 +109,41 @@
         </div>
         <div class="col-8">  <!-- Первая колонка 8 позиции -->
 
-                <!-- ВСТАВКА ФОРМЫ ИЗ FORMS.PY -->
-                <form class="rom g-2 pt-5 pb-5" method="POST">
-                    {% csrf_token %} <!-- ЗАЩИТА ФОРМЫ -->
+            <!-- ВСТАВКА ФОРМЫ ИЗ FORMS.PY -->
+            <form class="rom g-2 pt-5 pb-5" method="POST">
+                {% csrf_token %} <!-- ЗАЩИТА ФОРМЫ -->
 
-                    <!-- !!! Правильная вставка формы (где есть BS на [полях от widget от forms.py] и есть BS на [других остальных элементах навешенных вручную в html шаблоне] ) -->
+                <!-- !!! Правильная вставка формы (где есть BS на [полях от widget от forms.py] и есть BS на [других остальных элементах навешенных вручную в html шаблоне] ) -->
 
-                    <div class="mb-3"><label class="form-label">{{ form1.name.label }}</label>{{ form1.name }}<div class="form-text">{{ form1.name.help_text }}</div></div>
-                    <div class="mb-3"><label class="form-label">{{ form1.age.label }}</label>{{ form1.age }}<div class="form-text">{{ form1.age.help_text }}</div></div>
-                    <div class="mb-3"><label class="form-label">{{ form1.flag.label }}</label>{{ form1.flag }}<div class="form-text">{{ form1.flag.help_text }}</div></div>
-                    <div class="mb-3"><label class="form-label">{{ form1.comment.label }}</label>{{ form1.comment }}<div class="form-text">{{ form1.comment.help_text }}</div></div>
-                    <div class="mb-3"><label class="form-label">{{ form1.ling.label }}</label>{{ form1.ling }}<div class="form-text">{{ form1.ling.help_text }}</div></div>
-                    <div class="mb-3"><label class="form-label">{{ form1.country.label }}</label>{{ form1.country }}<div class="form-text">{{ form1.country.help_text }}</div></div>
-                    <div class="mb-3"><label class="form-label">{{ form1.file_name.label }}</label>{{ form1.file_name }}<div class="form-text">{{ form1.file_name.help_text }}</div></div>
-                    <div class="mb-3"><label class="form-label">{{ form1.file_path.label }}</label>{{ form1.file_path }}<div class="form-text">{{ form1.file_path.help_text }}</div></div>
+                <div class="mb-3"><label class="form-label">{{ form1.name.label }}</label>{{ form1.name }}
+                    <div class="form-text">{{ form1.name.help_text }}</div>
+                </div>
+                <div class="mb-3"><label class="form-label">{{ form1.age.label }}</label>{{ form1.age }}
+                    <div class="form-text">{{ form1.age.help_text }}</div>
+                </div>
+                <div class="mb-3"><label class="form-label">{{ form1.flag.label }}</label> {{ form1.flag }}
+                    <div class="form-text">{{ form1.flag.help_text }}</div>
+                </div>
+                <div class="mb-3"><label class="form-label">{{ form1.comment.label }}</label>{{ form1.comment }}
+                    <div class="form-text">{{ form1.comment.help_text }}</div>
+                </div>
+                <div class="mb-3"><label class="form-label">{{ form1.ling.label }}</label>{{ form1.ling }}
+                    <div class="form-text">{{ form1.ling.help_text }}</div>
+                </div>
+                <div class="mb-3"><label class="form-label">{{ form1.country.label }}</label>{{ form1.country }}
+                    <div class="form-text">{{ form1.country.help_text }}</div>
+                </div>
+                <div class="mb-3"><label class="form-label">{{ form1.file_name.label }}</label>{{ form1.file_name }}
+                    <div class="form-text">{{ form1.file_name.help_text }}</div>
+                </div>
+                <div class="mb-3"><label class="form-label">{{ form1.file_path.label }}</label>{{ form1.file_path }}
+                    <div class="form-text">{{ form1.file_path.help_text }}</div>
+                </div>
 
-                    <div class="d-grid"><button type="submit" class="btn btn-danger mt-3">Отправить</button></div> <!-- КНОПКА ФОРМЫ -->
-                </form>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-danger mt-3">Отправить</button>
+                </div> <!-- КНОПКА ФОРМЫ -->
+            </form>
 
             <ul class="mt-3">
                 {% for elm in data %}
@@ -134,8 +155,8 @@
         </div>
     </div>
 
-     <!-- ЧЕТВЕРТАЯ СТРОКА 12 позиций (всегда) -->
-    <div class="mt-5 row">
+    <!-- ЧЕТВЕРТАЯ СТРОКА 12 позиций (всегда) -->
+    <div class="mt-1 row">
         <div class="col-1">  <!-- Первая колонка 2 позиции -->
         </div>
         <div class="col-10">  <!-- Первая колонка 8 позиции -->
@@ -147,14 +168,35 @@
         </div>
     </div>
 
+    <!-- ПЯТАЯ СТРОКА -->
+    <h3 class="my-3 text-center">Форма с плавающей меткой</h3>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+
+            <div class="d-grid text-center">
+                <!-- ВСТАВКА ФОРМЫ ИЗ FORMS.PY -->
+                <form method="POST">
+                    {% csrf_token %} <!-- ЗАЩИТА ФОРМЫ -->
+                    <div class="form-floating mb-3">
+                        {{ form2.email }}
+                        <label>Email address</label>
+                    </div>
+                    <div class="form-floating">
+                        {{ form2.password }}
+                        <label>Password</label>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success mt-3">Авторизоваться</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+
 </div>
 
-<!-- ВСТАВКА ФОРМЫ ИЗ FORMS.PY -->
-<form action="" method="POST">
-    {% csrf_token %} <!-- ЗАЩИТА ФОРМЫ -->
-    {{ form2 }}  <!-- ПОЛЯ ВВОДА -->
-    <div class="d-grid"><button type="submit" class="btn btn-primary mt-3">Авторизоваться</button></div> <!-- КНОПКА ФОРМЫ -->
-</form>
 
 </body>
 </html>
