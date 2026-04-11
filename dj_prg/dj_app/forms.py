@@ -26,9 +26,6 @@ from django import forms
 # forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
 
 
-# Релеционные БД (Старее, Все храниться в таблицах) - PostgresSQL, MySQL, SQLite
-# Нереляционные БД (Новее, JSON) - MongoDB
-
 
 # Создание формы №1 (Основные поля)
 class UserForm(forms.Form):
@@ -49,15 +46,7 @@ class UserForm(forms.Form):
     file_path = forms.FilePathField(label="Путь к файлу", required=False, match=".py$", recursive=True, allow_folders=True, path=r"C:\Users\Teacher\Desktop\TeacherPython", widget=forms.Select(attrs={'class': 'form-control'}))
 
 
-# Создание формы №2 (Форма авторизации)
+# Создание формы №1 (Форма авторизации)
 class AuthorizationForm(forms.Form):
     email = forms.EmailField(label="Email", widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'name@example.com'}))
     password = forms.CharField(label="Password", widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
-
-
-# Создание формы №3 (Форма авторизации)
-class OperationsForm(forms.Form):
-    pk = forms.IntegerField(label="ID", required=False, widget=forms.NumberInput(attrs={'class': 'form-control'}))
-    name = forms.CharField(label="Имя", required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    age = forms.IntegerField(label="Возраст", required=True, widget=forms.NumberInput(attrs={'class': 'form-control'}))
-
