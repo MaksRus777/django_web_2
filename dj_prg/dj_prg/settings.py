@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t=_t#a010gol0i8(avhm#tmmceg#t$!ujhx1klielt&&m+oo8d'
+SECRET_KEY = 'django-insecure-e&_ho3aeh73h(v@wd5a)l=!z9z6%@6z!g)8rd*k@-43iunetvp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -52,7 +52,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'dj_prg.urls'
+
 TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -106,10 +108,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'Europe/Minsk'
+TIME_ZONE = 'Europe'
 
 USE_I18N = True
+
 USE_L10N = True
+
 USE_TZ = True
 
 
@@ -122,4 +126,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
